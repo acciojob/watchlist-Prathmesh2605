@@ -22,6 +22,8 @@ public class MovieRepository {
     //Movie-Director pair
     public String addMovieDirector(String movie, String director){
         if(movieDb.containsKey(movie) && directorDb.containsKey(director)){
+            movieDb.put(movie, movieDb.get(movie));
+            directorDb.put(director, directorDb.get(director));
             ArrayList<String> allMovies =  new ArrayList<>();
             if(directorDb.containsKey(director)){
                 allMovies = movieDirectorDb.get(director);
