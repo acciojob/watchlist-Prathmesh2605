@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("movies")
+//@RequestMapping("movies")
 public class MovieController {
     @Autowired
     MovieService movieService;
@@ -29,7 +29,7 @@ public class MovieController {
     @PutMapping("/movies/add-movie-director-pair")
     public ResponseEntity addMovieDirectorPair(@RequestParam("movieName")String movieName,@RequestParam("directorName") String directorName){
         movieService.addMovieDirector(movieName,directorName);
-        return new ResponseEntity<>("Added", HttpStatus.CREATED);
+        return new ResponseEntity<>("Added Successfully", HttpStatus.CREATED);
     }
 
     //Get movie by name

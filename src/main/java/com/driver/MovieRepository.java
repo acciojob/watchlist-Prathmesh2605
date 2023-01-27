@@ -6,9 +6,16 @@ import java.util.*;
 
 @Repository
 public class MovieRepository {
-    HashMap<String, Movie> movieDb = new HashMap<>();
-    HashMap<String, Director> directorDb = new HashMap<>();
-    HashMap<String, ArrayList<String>> movieDirectorDb = new HashMap<>();
+    private HashMap<String, Movie> movieDb;
+    private HashMap<String, Director> directorDb;
+    private HashMap<String, List<String>> movieDirectorDb;
+
+    public MovieRepository(){
+        this.movieDb = new HashMap<String, Movie>();
+        this.directorDb = new HashMap<String, Director>();
+        this.movieDirectorDb = new HashMap<String, List<String>>();
+    }
+
     //add movie
     public String addMovie(Movie movie){
         movieDb.put(movie.getName(),movie);
@@ -24,8 +31,8 @@ public class MovieRepository {
         if(movieDb.containsKey(movie) && directorDb.containsKey(director)){
             movieDb.put(movie, movieDb.get(movie));
             directorDb.put(director, directorDb.get(director));
-            ArrayList<String> allMovies =  new ArrayList<>();
-            if(directorDb.containsKey(director)){
+            List<String> allMovies =  new ArrayList<>();
+            if(movieDirectorDb.containsKey(director)){
                 allMovies = movieDirectorDb.get(director);
             }
             allMovies.add(movie);
@@ -59,10 +66,10 @@ public class MovieRepository {
     }
 
     //Get all movies by director
-    public List getMoviesByDirector(String name){
-        List<List<String>> result = new ArrayList<List<String>>();
+    public List<String> getMoviesByDirector(String name){
+        List<String> result = new ArrayList<String>();
         if(movieDirectorDb.containsKey(name)){
-            result.add(movieDirectorDb.get(name));
+            result = movieDirectorDb.get(name);
         }
         return result;
     }
