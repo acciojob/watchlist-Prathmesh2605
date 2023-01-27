@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("movies")
 public class MovieController {
     @Autowired
     MovieService movieService;
